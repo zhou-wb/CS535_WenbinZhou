@@ -20,9 +20,20 @@ bool CubeMap::LoadCubeImage(char* fname)
 
 void CubeMap::Locate(int face_index, int local_u, int local_v, int &cube_u, int &cube_v)
 {
-	int origin[6][2] = { {cube_length, 0}, {0, cube_length}, {cube_length, cube_length}, \
-							{2 * cube_length, cube_length},{cube_length, 2 * cube_length},{cube_length, 3 * cube_length} };
-	int direction[6][2] = { {1,1},{1,1},{1,1},{1,1},{1,1},{} };
+	float origin[6][2] = { {1.5f*cube_length, 0.5f*cube_length}, {0.5f*cube_length, 1.5f*cube_length}, \
+	                       {1.5f*cube_length, 1.5f*cube_length}, {2.5f*cube_length, 1.5f*cube_length}, \
+	                       {1.5f*cube_length, 2.5f*cube_length}, {1.5f*cube_length, 3.5f*cube_length} };
+	float xyz2u[6][3] = { {-1,0,0},{0,0,-1},{-1,0,0},{0,0,1},{-1,0,0},{-1,0,0} };
+	float xyz2v[6][3] = { {0,0,-1},{0,-1,0},{0,-1,0},{0,-1,0},{0,0,1},{0,1,0} };
+
+
+
+	for (int face_i=0; face_i<6; face_i++)
+	{
+		if ()
+		{
+		}
+	}
 }
 
 CubeMap::~CubeMap()

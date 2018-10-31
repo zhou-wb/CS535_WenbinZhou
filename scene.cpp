@@ -46,7 +46,7 @@ void Scene::scene_1()
 	//init triangle mesh
 	tmsN = 2;
 	tms = new TM[tmsN];
-	tms[0].LoadBin("geometry/teapot57K.bin");
+	tms[0].LoadBin("geometry/teapot1K.bin");
 	tms[1].SetRectangle(V3(0, 0, 0), 100, 100);
 	tms[1].RotateAboutArbitraryAxis(V3(0, 0, 0), V3(1, 0, 0), 90);
 
@@ -58,7 +58,7 @@ void Scene::scene_1()
 
 	lightsN = 2;
 	lights = new Light(0.3, lightsN, tms, tmsN);
-	V3 light_pos(40, -30, 80);
+	V3 light_pos(30, -40, 120);
 	lights->AddPointLight(light_pos, V3(1, 1, 1));
 	//lights->AddPointLight(V3(-200, 0, 100), V3(1, 1, 1));
 

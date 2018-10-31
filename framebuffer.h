@@ -33,6 +33,7 @@ public:
 	//image plane naive draw function
 	//input index must be integer
 	void DrawRectangle(int u0, int v0, int u1, int v1, unsigned int color);
+	void DrawRectangle(int u0, int v0, int u1, int v1, unsigned int color, float depth);
 	void DrawCircle(int u0, int v0, int r, unsigned int color);
 	
 	//has nothing to do with direction or index convert

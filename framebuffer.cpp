@@ -156,6 +156,26 @@ void FrameBuffer::DrawRectangle(int u0, int v0, int u1, int v1, unsigned int col
 	}
 }
 
+void FrameBuffer::DrawRectangle(int u0, int v0, int u1, int v1, unsigned int color, float depth)
+{
+	if (!ClipToScreen(u0, v0, u1, v1))
+	{
+		return;
+	}
+
+	for (int u = u0; u <= u1; u++)
+	{
+		for (int v = v0; v <= v1; v++)
+		{
+			if (!Visible(u,v, depth))
+			{
+				continue;
+			}
+			Set(u, v, color);
+		}
+	}
+}
+
 void FrameBuffer::DrawCircle(int u0, int v0, int r, unsigned int color)
 {
 	int left = u0 - r, right = u0 + r, top = v0 + r, bottom = v0 - r;
@@ -268,13 +288,13 @@ void FrameBuffer::Draw3DPoint(V3 p, V3 c, PPC *ppc, int psize)
 	if (pp[0] < 0.0f || pp[0] >= (float)w || pp[1] < 0.0f || pp[1] >= (float)h)
 		return;
 	//check if p is near enough the camera
-	if (!Visible(pp[0], pp[1], pp[2]))
-		return;
+	/*if (!Visible(pp[0], pp[1], pp[2]))
+		return;*/
 	//find integer index of pp
 	int u = (int)pp[0];
 	int v = (int)pp[1];
 	//use a small rectangle to represent a point
-	DrawRectangle(u - psize / 2, v - psize / 2, u + psize / 2, v + psize / 2, c.GetColor());
+	DrawRectangle(u - psize / 2, v - psize / 2, u + psize / 2, v + psize / 2, c.GetColor(), pp[2]);
 }
 
 void FrameBuffer::Visualize3D(PPC *ppc0, PPC *ppc1, FrameBuffer *fb1) 

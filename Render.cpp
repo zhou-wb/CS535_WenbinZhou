@@ -151,7 +151,7 @@ void Render::RenderOriginalColor()
 						continue;
 					}
 					SetVertsABC();
-					V3 lights_scf = light->ColorScf(Interpolate(verts_ABC), Interpolate(normal_ABC), ppc->C, 50);
+					V3 lights_scf = light->ColorScf(Interpolate(verts_ABC), Interpolate(normal_ABC), ppc->C, 300);
 
 					fb->Set(u, v, V3(1 * lights_scf[0], 0 * lights_scf[2], 0 * lights_scf[2]).GetColor());
 				}

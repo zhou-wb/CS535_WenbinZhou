@@ -14,7 +14,7 @@ Light::Light(float _k_ambient, int maxmun, TM *tms, int tmsN) :k_ambient(_k_ambi
 	lightsN = 0; 
 	lights_maxmum = maxmun;
 	
-	w = 500; h = 500;
+	w = 1500; h = 1500;
 	ppc = new PPC(90, w, h);
 	fb = new FrameBuffer(0, 0, w, h);
 	render_ZB = new Render(fb, ppc, tms, tmsN);
